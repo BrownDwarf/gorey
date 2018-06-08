@@ -1,0 +1,50 @@
+Comments: 'gorey single order'
+PCA:
+  path: $gorey/sf/m100/PHOENIX_IGRINS_H_PCA_Teff3500-5700.hdf5
+  priors:
+  - [2.0, 0.0075]
+  - [2.0, 0.75]
+  - [2.0, 0.75]
+  threshold: 0.999
+Phi: {l: 20.0, logAmp: -2.0, sigAmp: 1.0}
+Phi_jump: {l: 0.25, logAmp: 0.01, sigAmp: 0.025}
+Theta:
+  Av: 0.0
+  grid: [5500.0, 3.5, 0.0]
+  logOmega: -0.2
+  logOmega2: -0.6
+  teff2: 4000.0
+  vsini: 40.0
+  vz: 11.0
+Theta_jump:
+  Av: 0.01
+  grid: [3.0, 0.003, 0.001]
+  logOmega: 0.003
+  logOmega2: 0.003
+  teff2: 3.0
+  vsini: 0.05
+  vz: 0.05
+Theta_priors: $gorey/code/priors/user_prior.py
+cheb_degree: 4
+cheb_jump: 0.0001
+data:
+  files: [$gorey/data/reduced/gorey_IGRINS_m100.hdf5]
+  grid_name: PHOENIX
+  instruments: [IGRINS_H]
+  orders: [0]
+grid:
+  buffer: 30.0
+  hdf5_path: $gorey/sf/m100/libraries/PHOENIX_IGRINS_m100_Teff3500-5700.hdf5
+  key_name: t{0:.0f}g{1:.1f}z{2:.1f}
+  parname: [temp, logg, Z]
+  parrange:
+  - [3500, 5700]
+  - [3.0, 3.5]
+  - [-0.5, 0.5]
+  raw_path: $Starfish/libraries/raw/PHOENIX/
+  wl_range: [17799, 17978]
+name: mix_emcee
+outdir: output/
+plotdir: plots/
+region_params: {logAmp: -2.0, sigma: 7.0}
+sigma_clip: 4.0
